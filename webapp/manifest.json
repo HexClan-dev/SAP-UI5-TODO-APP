@@ -1,0 +1,143 @@
+{
+    "_version": "1.32.0",
+    "sap.app": {
+        "id": "todoapp",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata/SAP/ZTODOLIST_SRV/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            }
+        },
+        "crossNavigation": {
+            "inbounds": {
+                "todoapp-inbound": {
+                    "signature": {
+                        "parameters": {},
+                        "additionalParameters": "allowed"
+                    },
+                    "semanticObject": "TODO",
+                    "action": "activate",
+                    "title": "{{flpTitle}}",
+                    "subTitle": "{{flpSubtitle}}",
+                    "icon": ""
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": true,
+        "dependencies": {
+            "minUI5Version": "1.102.1",
+            "libs": {
+                "sap.ui.core": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "todoapp.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "useBatch": false,
+                "defaultOperationMode": "Server",
+                "defaultBindingMode": "TwoWay",
+                "defaultCountMode": "Inline",
+                "refreshAfterChange": true,
+                "preload": true,
+                "settings": {}
+            }
+        },
+        "resources": {
+            "css": [{
+                "uri": "css/style.css"
+            }]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "todoapp.view",
+                "controlAggregation": "pages",
+                "controlId": "app",
+                "clearControlAggregation": false,
+                "bypassed": {
+                    "target": ["notFound"]
+                }
+            },
+            "routes": [{
+                    "name": "RouteMainView",
+                    "pattern": "",
+                    "target": [
+                        "TargetMainView"
+                    ]
+                },
+                {
+                    "name": "RouteDetailView",
+                    "pattern": "Todo/{id}",
+                    "target": [
+                        "TargetDetailView"
+                    ]
+                }
+            ],
+            "targets": {
+                "TargetMainView": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewName": "MainView"
+                },
+                "TargetDetailView": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "viewName": "DetailView"
+                },
+                "notFound": {
+                    "viewName": "NotFound",
+                    "transition": "show"
+                }
+            }
+        },
+        "rootView": {
+            "viewName": "todoapp.view.MainView",
+            "type": "XML",
+            "async": true,
+            "id": "MainView"
+        }
+    }
+}

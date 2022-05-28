@@ -1,0 +1,16 @@
+<mvc:View controllerName="todoapp.controller.DetailView" async="true"
+    xmlns="sap.m"
+    xmlns:t="sap.ui.table"
+    xmlns:f="sap.f"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc">
+
+    <Page id="detalInfor" title="{i18n>title}" showNavButton="true" navButtonPress=".goBack">
+        <content>
+            <Label text="The TODO Info : {TODO>id}" />
+        </content>
+    </Page>
+
+</mvc:View>

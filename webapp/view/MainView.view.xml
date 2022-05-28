@@ -1,0 +1,24 @@
+<mvc:View controllerName="todoapp.controller.MainView"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true" async="true"
+    xmlns="sap.m">
+    <Shell id="shell">
+        <App id="app">
+            <pages>
+                <Page id="page" title="{i18n>title}">
+                    <content>
+                        <List items="{/TODOSet}" headerText="TODO List" growing="true" growingThreshold="4" growingScrollToLoad="false">
+                            <items>
+                                <StandardListItem type="Active" title="{Title}" description="{Description}" press=".onItemSelected" icon="{
+                                            parts :[
+                                                { value : 'Status' }
+                                            ],
+                                            formatter: '.formatter.getStatus'
+                                        }" iconDensityAware="false" iconInset="false" />
+                            </items>
+                        </List>
+                    </content>
+                </Page>
+            </pages>
+        </App>
+    </Shell>
+</mvc:View>
