@@ -1,16 +1,17 @@
 sap.ui.define([
         "./BaseController",
-        "todoapp/model/formatter"
-
+        "../model/formatter",
+        "sap/ui/Device",
     ],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
      */
-    function (Controller) {
+    function (Controller, formatter, Device) {
         "use strict";
 
         return Controller.extend("todoapp.controller.MainView", {
 
+            formatter: formatter,
 
             onItemSelected: function (oEvent) {
                 var bReplace = !Device.system.phone;

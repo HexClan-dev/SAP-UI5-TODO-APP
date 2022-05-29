@@ -10,7 +10,7 @@
                             <items>
                                 <StandardListItem type="Active" title="{Title}" description="{Description}" press=".onItemSelected" icon="{
                                             parts :[
-                                                { value : 'Status' }
+                                                { path : 'Status' }
                                             ],
                                             formatter: '.formatter.getStatus'
                                         }" iconDensityAware="false" iconInset="false" />

@@ -9,7 +9,16 @@
 
     <Page id="detalInfor" title="{i18n>title}" showNavButton="true" navButtonPress=".goBack">
         <content>
-            <Label text="The TODO Info : {TODO>id}" />
+            <Label text="The TODO Info : {Title}" />
+            <!-- <Label text="Date : {Enddate}" /> -->
+
+            <Text text="{
+				path : 'Enddate',
+				type : 'sap.ui.model.type.Date',
+				formatOptions: {
+					style : 'full'
+				}
+			}" />
         </content>
     </Page>
 
