@@ -10,7 +10,7 @@ sap.ui.define([
     },
 
     _onNotFoundDisplayed: function () {
-      console.log("Thisis the  Not found Controller");
+      console.log("This is the  Not found Controller");
     },
 
     goBack: function () {

@@ -25,6 +25,10 @@ sap.ui.define([
                 this.getRouter().navTo("RouteDetailView", {
                     'id': Id
                 }, bReplace);
+            },
+
+            onNewTODO: function () {
+                this.getRouter().navTo('NewTodo');
             }
 
         });

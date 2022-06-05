@@ -15,6 +15,15 @@
                                             formatter: '.formatter.getStatus'
                                         }" iconDensityAware="false" iconInset="false" />
                             </items>
+
+                            <headerToolbar>
+                                <OverflowToolbar>
+                                    <Title text="TODO List" level="H2" />
+                                    <ToolbarSpacer />
+                                    <Button text="Add new Todo" icon="sap-icon://add" press=".onNewTODO" />
+                                </OverflowToolbar>
+                            </headerToolbar>
+
                         </List>
                     </content>
                 </Page>
