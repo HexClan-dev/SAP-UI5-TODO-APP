@@ -73,13 +73,15 @@
             },
             "": {
                 "dataSource": "mainService",
-                "useBatch": false,
-                "defaultOperationMode": "Server",
-                "defaultBindingMode": "TwoWay",
-                "defaultCountMode": "Inline",
-                "refreshAfterChange": true,
-                "preload": true,
-                "settings": {}
+                "settings": {
+                    "useBatch": false,
+                    "defaultOperationMode": "Server",
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": true,
+                    "preload": true,
+                    "settings": {}
+                }
             }
         },
         "resources": {
@@ -108,6 +110,13 @@
                     ]
                 },
                 {
+                    "name": "NewTodo",
+                    "pattern": "New/Todo",
+                    "target": [
+                        "NewTodo"
+                    ]
+                },
+                {
                     "name": "RouteDetailView",
                     "pattern": "Todo/{id}",
                     "target": [
@@ -122,11 +131,17 @@
                     "clearControlAggregation": false,
                     "viewName": "MainView"
                 },
+                "NewTodo": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "viewName": "NewTodo"
+                },
                 "TargetDetailView": {
                     "viewType": "XML",
                     "transition": "slide",
                     "viewName": "DetailView"
                 },
+
                 "notFound": {
                     "viewName": "NotFound",
                     "transition": "show"
