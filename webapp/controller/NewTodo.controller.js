@@ -43,7 +43,7 @@ sap.ui.define(
                     error: this._onCreateError.bind(this)
                 });
 
-                console.log(oContext);
+                // console.log(oContext);
                 // Bind the Context to the actual View
                 this.getView().setBindingContext(oContext);
 
@@ -51,20 +51,26 @@ sap.ui.define(
 
             _onMetadataLoaded: function () {
                 this.getModel().read("/TODOSet/$count", {
-                    success: this._onNrEntriesFound.bind(this)
+                    success: this._onNrEntriesFound.bind(this),
+                    error: function () {
+
+                        MessageToast.show('The backend comunicatione failed', {
+                            closeOnBrowserNavigation: false // This will prevent to be close when we navigate to the next View
+                        })
+                    }
                 });
             },
 
             _onCreateSuccess: function (oProduct) { // The object created will be assigned here
 
-                console.log("Created: ", oProduct);
+                // console.log("Created: ", oProduct);
 
                 // This will navigate to the details View for the new Object that is Created
                 const sId = oProduct.ProductId;
-                console.log(sId);
+                // console.log(sId);
 
                 this.getRouter().navTo("RouteDetailView", {
-                    id: this.id
+                    id: sId
                 }, true);
 
                 // The object is unbinded from the View, to be on the Safe Side
@@ -79,11 +85,8 @@ sap.ui.define(
             },
 
             _onCreateError: function (oError) {
-                console.log("Error Service");
-
+                // console.log("Error Service");
                 MessageToast.show(oError.message);
-
-
             },
 
             onSave: function () {

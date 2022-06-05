@@ -8,7 +8,17 @@
                     <content>
                         <List items="{/TODOSet}" headerText="TODO List" growing="true" growingThreshold="4" growingScrollToLoad="false">
                             <items>
-                                <StandardListItem type="Active" title="{Title}" description="{Description}" press=".onItemSelected" icon="{
+                                <StandardListItem type="Active" title="{Title}" description="{Description}" press=".onItemSelected" info="{
+                                    parts :[
+                                        { path : 'Status' }
+                                    ],
+                                    formatter: '.formatter.getStatusText'
+                                }" infoState="{
+                                    parts :[
+                                        { path : 'Status' }
+                                    ],
+                                    formatter: '.formatter.getStatusColor'
+                                }" icon="{
                                             parts :[
                                                 { path : 'Status' }
                                             ],

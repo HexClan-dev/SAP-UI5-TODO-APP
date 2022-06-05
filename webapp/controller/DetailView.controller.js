@@ -1,17 +1,17 @@
 sap.ui.define(
-  ["./BaseController"],
+  ["./BaseController", "sap/m/MessageToast"],
   /**
    * @param {typeof sap.ui.core.mvc.Controller} Controller
    */
-  function (Controller) {
+  function (Controller, MessageToast) {
     "use strict";
 
     return Controller.extend("todoapp.controller.DetailView", {
 
-      id: '',
+      // id: '',
 
       onInit: function () {
-        this.getRouter().getRoute("RouteDetailView").attachPatternMatched(this._onRouteMatched, this);
+        this.getRouter().getRoute("RouteDetailView").attachPatternMatched(this._onRouteMatched.bind(this), this);
       },
 
       _onRouteMatched: function (oEvent) {
@@ -20,7 +20,8 @@ sap.ui.define(
         // const sId = oParameters.arguments.id; // Yay! Our route name!
         // this.id = sId;
 
-        var sId = oEvent.getParameter("arguments").id;
+        const sId = oEvent.getParameter("arguments").id;
+        // console.log("id: " + sId)
 
         this.getModel().metadataLoaded().then(function () {
           var sObjectPath = this.getModel().createKey("TODOSet", {
@@ -64,7 +65,7 @@ sap.ui.define(
         var oView = this.getView(),
           oElementBinding = oView.getElementBinding();
 
-        console.log(oElementBinding);
+        // console.log(oElementBinding);
         // No data for the binding
         if (!oElementBinding.getBoundContext()) {
           //TODO Display that the objecy you want to display does not exist
@@ -110,6 +111,39 @@ sap.ui.define(
         //     oView.setModel(oModelNew, 'TODO')
         //   }
         // });
+
+      },
+
+      onChangeStatus: function () {
+
+        var oModel = this.getModel();
+        // find a way of getting the ID from the Model
+        const oBindingObject = this.getView().getBindingContext().getObject();
+
+        console.log("Binding Object: ", oBindingObject);
+
+        // this.getView().setBusy(true);
+
+        oModel.callFunction("/ChangeStatus", { // function import name
+          method: "POST", // http method
+          urlParameters: {
+            "Id": oBindingObject.Id
+          }, // function import parameters        
+          sucess: function (oData, response) {
+
+            this.getView().setBusy(false);
+
+            MessageToast.show("The Status is changed Successfully!");
+
+            // console.log("Response: ", response)
+            // console.log("Function Import Success!");
+          }, // callback function for success
+          error: function (oError) {
+            this.getView().setBusy(false);
+
+            console.log("Function Import Error!");
+          } // callback function for error
+        });
 
       },
 
