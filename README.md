@@ -7,9 +7,9 @@
 |**Generation Platform**<br>Visual Studio Code|
 |**Floorplan Used**<br>simple|
 |**Service Type**<br>OData Url|
-|**Service URL**<br>http://<IP>:50000/sap/opu/odata/SAP/ZTODOLIST_SRV/
+|**Service URL**<br>http://BackEnd-Host:50000/sap/opu/odata/SAP/ZTODOLIST_SRV/
 |**Module Name**<br>todoapp|
-|**Application Title**<br>TODO App|
+|**Application Title**<br>SAP UI5 TODO Application|
 |**Namespace**<br>|
 |**UI5 Theme**<br>sap_fiori_3|
 |**UI5 Version**<br>1.102.1|
@@ -19,11 +19,11 @@
 
 ## todoapp
 
-TODO Application
+SAP UI5 TODO Application
 
 ### Starting the generated app
 
--   This app has been generated using the SAP Fiori tools - App Generator, as part of the SAP Fiori tools suite.  In order to launch the generated app, simply run the following from the generated app root folder:
+-   This app has been generated using the SAP Fiori tools - App Generator, as part of the SAP Fiori tools suite. In order to launch the App, simply run the following comands from the app root folder:
 
 
 ```
@@ -31,6 +31,7 @@ TODO Application
 ```
 
 - To Start the FIORI App run the following command
+
 ```
     npm start
 ```
