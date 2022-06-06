@@ -6,7 +6,7 @@
             <pages>
                 <Page id="page" title="{i18n>title}">
                     <content>
-                        <List items="{/TODOSet}" headerText="TODO List" growing="true" growingThreshold="4" growingScrollToLoad="false">
+                        <List items="{/TODOSet}" id="mainList" headerText="TODO List" growing="true" growingThreshold="4" mode="SingleSelect" growingScrollToLoad="false">
                             <items>
                                 <StandardListItem type="Active" title="{Title}" description="{Description}" press=".onItemSelected" info="{
                                     parts :[
@@ -31,6 +31,8 @@
                                     <Title text="TODO List" level="H2" />
                                     <ToolbarSpacer />
                                     <Button text="Add new Todo" icon="sap-icon://add" press=".onNewTODO" />
+
+                                    <Button text="Delete" icon="sap-icon://delete" press=".onPressDelete" />
                                 </OverflowToolbar>
                             </headerToolbar>
 

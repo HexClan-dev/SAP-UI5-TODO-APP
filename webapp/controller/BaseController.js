@@ -1,12 +1,26 @@
-sap.ui.define(
-  ["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap/ui/core/UIComponent", "todoapp/model/formatter"],
+sap.ui.define([
+    "sap/ui/core/mvc/Controller",
+    "sap/ui/core/routing/History",
+    "sap/ui/core/UIComponent",
+    "todoapp/model/formatter",
+    "sap/m/Dialog",
+    "sap/m/Button",
+    "sap/m/Text",
+    "sap/m/library"
+  ],
   /**
    * @param {typeof sap.ui.core.mvc.Controller} Controller
    * @param {typeof sap.ui.core.routing.History} History
    * @param {typeof sap.ui.core.UIComponent} UIComponent
    */
-  function (Controller, History, UIComponent, formatter) {
+  function (Controller, History, UIComponent, formatter, Dialog, Button, Text, mobileLibrary) {
     "use strict";
+
+    // shortcut for sap.m.ButtonType
+    var ButtonType = mobileLibrary.ButtonType;
+
+    // shortcut for sap.m.DialogType
+    var DialogType = mobileLibrary.DialogType;
 
     return Controller.extend("todoapp.controller.BaseController", {
       formatter: formatter,
@@ -65,6 +79,35 @@ sap.ui.define(
           this.getRouter().navTo("RouteMainView", {}, true /* no history*/ );
         }
       },
+
+      onApproveDialogPress: function (message, approve = () => {}, cancel = () => {}) {
+        if (!this.oApproveDialog) {
+          this.oApproveDialog = new Dialog({
+            type: DialogType.Message,
+            title: "Confirm",
+            content: new Text({
+              text: message
+            }),
+            beginButton: new Button({
+              type: ButtonType.Emphasized,
+              text: "Continue",
+              press: function () {
+                approve();
+                this.oApproveDialog.close();
+              }.bind(this)
+            }),
+            endButton: new Button({
+              text: "Cancel",
+              press: function () {
+                cancel();
+                this.oApproveDialog.close();
+              }.bind(this)
+            })
+          });
+        }
+
+        this.oApproveDialog.open();
+      }
     });
   }
 );

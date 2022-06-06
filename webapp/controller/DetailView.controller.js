@@ -51,11 +51,11 @@ sap.ui.define(
           path: sObjectPath,
           events: {
             change: this._onBindingChange.bind(this),
-            dataRequested: function () {
-              console.log("Data Requested");
+            dataRequested: function (oData) {
+              console.log("Data Requested : ", oData);
             },
-            dataReceived: function () {
-              console.log("Data received");
+            dataReceived: function (oData) {
+              console.log("Data received : ", oData);
             }
           }
         });
@@ -118,33 +118,43 @@ sap.ui.define(
 
         var oModel = this.getModel();
         // find a way of getting the ID from the Model
-        const oBindingObject = this.getView().getBindingContext().getObject();
+        const oBindingContext = this.getView().getBindingContext();
 
-        console.log("Binding Object: ", oBindingObject);
+        if (!oBindingContext) {
+          MessageToast.show("Error while getting Binding!");
+          return;
+        }
 
+        const oBindingObject = oBindingContext.getObject();
+
+        // console.log("Binding Object: ", oBindingObject);
         // this.getView().setBusy(true);
+        this.byId('chStatus').setEnabled(false);
 
         oModel.callFunction("/ChangeStatus", { // function import name
           method: "POST", // http method
           urlParameters: {
             "Id": oBindingObject.Id
           }, // function import parameters        
-          sucess: function (oData, response) {
-
-            this.getView().setBusy(false);
-
-            MessageToast.show("The Status is changed Successfully!");
-
-            // console.log("Response: ", response)
-            // console.log("Function Import Success!");
-          }, // callback function for success
-          error: function (oError) {
-            this.getView().setBusy(false);
-
-            console.log("Function Import Error!");
-          } // callback function for error
+          success: this._onChangeStatusSuccess.bind(this), // callback function for success
+          error: this._onChangeStatusError.bind(this)
         });
 
+      },
+
+
+      _onChangeStatusError: function (oError) {
+        this.byId('chStatus').setEnabled(true);
+        MessageToast.show("An Error Occured while chaing the Status !");
+      },
+
+      _onChangeStatusSuccess: function (oData, response) {
+        this.byId('chStatus').setEnabled(true);
+        MessageToast.show("The Status is changed Successfully!");
+
+        // console.log("oData: ", oData)
+        // console.log("Response: ", response)
+        // console.log("Function Import Success!");
       },
 
       goBack: function () {

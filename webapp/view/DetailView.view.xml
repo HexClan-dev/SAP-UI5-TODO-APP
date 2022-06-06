@@ -52,7 +52,7 @@
                 </semantic:titleHeading>
 
                 <semantic:titleMainAction>
-                    <semantic:TitleMainAction id="chStatus" text="Change Status" press=".onChangeStatus"/>
+                    <semantic:TitleMainAction id="chStatus" text="{= ${Status} === '1' ? 'Set Done' : 'Set Undone' }" press=".onChangeStatus"/>
                 </semantic:titleMainAction>
                 <!-- Semantic Footer Buttons
                 <semantic:footerMainAction>
