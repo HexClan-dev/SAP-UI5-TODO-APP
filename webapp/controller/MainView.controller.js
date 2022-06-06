@@ -56,7 +56,6 @@ sap.ui.define([
 
                     // console.log("Context : ", context.sPath);
                     const sPath = context.sPath;
-
                     var obj = context.getProperty(null, context);
                     // console.log("Object : ", obj);
 

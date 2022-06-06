@@ -65,7 +65,7 @@ sap.ui.define(
                 // console.log("Created: ", oProduct);
                 // This will navigate to the details View for the new Object that is Created
                 const sId = oProduct.Id;
-                console.log(sId);
+                // console.log(sId);
                 this.getRouter().navTo("RouteDetailView", {
                     id: sId
                 }, true);
