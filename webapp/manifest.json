@@ -141,7 +141,6 @@
                     "transition": "slide",
                     "viewName": "DetailView"
                 },
-
                 "notFound": {
                     "viewName": "NotFound",
                     "transition": "show"

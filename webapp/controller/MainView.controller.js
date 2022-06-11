@@ -6,12 +6,14 @@ sap.ui.define([
         "sap/m/Dialog",
         "sap/m/Button",
         "sap/m/Text",
-        "sap/m/library"
+        "sap/m/library",
+        "sap/ui/model/Filter",
+        "sap/ui/model/FilterOperator"
     ],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
      */
-    function (Controller, formatter, Device, MessageToast, Dialog, Button, Text, mobileLibrary) {
+    function (Controller, formatter, Device, MessageToast, Dialog, Button, Text, mobileLibrary, Filter, FilterOperator) {
         "use strict";
 
 
@@ -73,7 +75,18 @@ sap.ui.define([
                     }.bind(this));
 
                 }
-            }
+            },
 
+            onUserFilter: function (oEvent) {
+                const oFilter = [],
+                    sQuery = oEvent.getParameter("query"),
+                    oList = this.getView().byId("mainTodoList"),
+                    oBinding = oList.getBinding("items");
+
+                if (sQuery) {
+                    oFilter.push(new Filter("Title", FilterOperator.Contains, sQuery));
+                }
+                oBinding.filter(oFilter);
+            },
         })
     });

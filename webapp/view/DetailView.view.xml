@@ -10,17 +10,19 @@
     xmlns:mvc="sap.ui.core.mvc">
 
 
-    <Page id="detalInfor" title="{i18n>title}" showNavButton="true" navButtonPress=".goBack">
+    <Page id="detalInfor" title="{i18n>titleTODODetail}" showNavButton="true" navButtonPress=".goBack">
         <content>
             <semantic:SemanticPage id="pageDetails" headerPinnable="false" toggleHeaderOnTitleClick="false" busy="{objectView>/busy}" busyIndicatorDelay="{objectView>/delay}">
 
                 <semantic:headerContent>
-                    <layout:HorizontalLayout allowWrapping="true">
-                        <layout:VerticalLayout class="sapUiMediumMarginEnd">
 
-                            <!-- <ObjectAttribute title="Status"/> -->
+                    <layout:VerticalLayout>
+                        <layout:HorizontalLayout allowWrapping="true">
+                            <layout:VerticalLayout class="sapUiMediumMarginEnd">
 
-                            <ObjectStatus text="{
+                                <!-- <ObjectAttribute title="Status"/> -->
+
+                                <ObjectStatus text="{
                                     parts :[
                                         { path : 'Status' }
                                     ],
@@ -36,15 +38,25 @@
                                     ],
                                     formatter: '.formatter.getStatus'
                                 }" />
-                            <ObjectAttribute title="End Date" text="{Endtime}"/>
+                                <ObjectAttribute title="End Date" text="{Endtime}"/>
 
-                        </layout:VerticalLayout>
+                            </layout:VerticalLayout>
 
-                        <layout:VerticalLayout>
+                            <layout:VerticalLayout>
+                                <ObjectAttribute title="Description" text="{Description}"/>
+
+                            </layout:VerticalLayout>
+
+                        </layout:HorizontalLayout>
+
+                        <!-- <layout:HorizontalLayout allowWrapping="true">
                             <ObjectAttribute title="Description" text="{Description}"/>
+                            <ObjectAttribute title="Description" text="{Description}"/>
+                            <ObjectAttribute title="Description" text="{Description}"/>
+                        </layout:HorizontalLayout> -->
 
-                        </layout:VerticalLayout>
-                    </layout:HorizontalLayout>
+                    </layout:VerticalLayout>
+
                 </semantic:headerContent>
 
                 <semantic:titleHeading>

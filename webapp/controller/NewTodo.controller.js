@@ -21,9 +21,7 @@ sap.ui.define(
             _onMetadataLoaded: function () {
 
                 this.getLastId();
-
                 //Or
-
                 // This Was used Before
                 // this.getModel().read("/TODOSet/$count", {
                 //     success: this._onNrEntriesFound.bind(this),

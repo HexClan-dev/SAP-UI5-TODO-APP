@@ -8,18 +8,14 @@ sap.ui.define(
 
     return Controller.extend("todoapp.controller.DetailView", {
 
-      // id: '',
-
       onInit: function () {
         this.getRouter().getRoute("RouteDetailView").attachPatternMatched(this._onRouteMatched.bind(this), this);
       },
 
       _onRouteMatched: function (oEvent) {
-
         // const oParameters = oEvent.getParameters();
         // const sId = oParameters.arguments.id; // Yay! Our route name!
         // this.id = sId;
-
         const sId = oEvent.getParameter("arguments").id;
         // console.log("id: " + sId)
 
