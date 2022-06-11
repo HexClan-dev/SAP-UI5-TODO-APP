@@ -12,7 +12,7 @@
 
     <Page id="detalInfor" title="{i18n>titleTODODetail}" showNavButton="true" navButtonPress=".goBack">
         <content>
-            <semantic:SemanticPage id="pageDetails" headerPinnable="false" toggleHeaderOnTitleClick="false" busy="{objectView>/busy}" busyIndicatorDelay="{objectView>/delay}">
+            <semantic:SemanticPage id="pageDetails" headerPinnable="false" toggleHeaderOnTitleClick="false">
 
                 <semantic:headerContent>
 
@@ -20,9 +20,7 @@
                         <layout:HorizontalLayout allowWrapping="true">
                             <layout:VerticalLayout class="sapUiMediumMarginEnd">
 
-                                <!-- <ObjectAttribute title="Status"/> -->
-
-                                <ObjectStatus text="{
+                                <ObjectStatus title="{Status/#@sap:label}" text="{
                                     parts :[
                                         { path : 'Status' }
                                     ],
@@ -38,12 +36,12 @@
                                     ],
                                     formatter: '.formatter.getStatus'
                                 }" />
-                                <ObjectAttribute title="End Date" text="{Endtime}"/>
+                                <ObjectAttribute title="{Endtime/#@sap:label}" text="{Endtime}"/>
 
                             </layout:VerticalLayout>
 
                             <layout:VerticalLayout>
-                                <ObjectAttribute title="Description" text="{Description}"/>
+                                <ObjectAttribute title="{Description/#@sap:label}" text="{Description}"/>
 
                             </layout:VerticalLayout>
 
@@ -64,7 +62,7 @@
                 </semantic:titleHeading>
 
                 <semantic:titleMainAction>
-                    <semantic:TitleMainAction id="chStatus" text="{= ${Status} === '1' ? 'Set Done' : 'Set Undone' }" press=".onChangeStatus"/>
+                    <semantic:TitleMainAction id="chStatus" text="{= ${Status} === '1' ? ${i18n>todoBtnSetDone} : ${i18n>todoBtnSetUndone} }" press=".onChangeStatus"/>
                 </semantic:titleMainAction>
                 <!-- Semantic Footer Buttons
                 <semantic:footerMainAction>
