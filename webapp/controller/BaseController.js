@@ -107,7 +107,17 @@ sap.ui.define([
         }
 
         this.oApproveDialog.open();
+      },
+
+      geti18Text: function (key, parameters = []) {
+        if (!key) {
+          return '';
+        }
+
+        // This will get a predefined text from the i18 file
+        return this.getResourceBundle().getText(key, parameters);
       }
+
     });
   }
 );
