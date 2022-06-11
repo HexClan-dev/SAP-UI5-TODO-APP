@@ -13,17 +13,17 @@
 
                         <smartForm:SmartForm id="smartForm" editTogglable="false" editable="true" flexEnabled="false">
                             <smartForm:Group>
-                                <smartForm:GroupElement label="Title">
+                                <smartForm:GroupElement label="{/Title}">
                                     <smartField:SmartField value="{Title}" />
                                 </smartForm:GroupElement>
-                                <smartForm:GroupElement label="Description">
+                                <smartForm:GroupElement label="{/Description}">
                                     <smartField:SmartField value="{Description}" />
                                 </smartForm:GroupElement>
                                 <!-- <smartForm:GroupElement label="End Time">
                                     <smartField:SmartField value="{Endtime}" />
                                 </smartForm:GroupElement>
                                  -->
-                                <smartForm:GroupElement label="End Date">
+                                <smartForm:GroupElement label="{Endtime/#@sap:label}">
                                     <DateTimePicker id="DTP1" value="{Endtime}" placeholder="Enter End Date" class="sapUiSmallMarginBottom"/>
                                 </smartForm:GroupElement>
                             </smartForm:Group>
@@ -36,12 +36,12 @@
                             <!-- <OverflowToolbarButton tooltip="Cancel" text="Cancel" press=".goBack" icon="sap-icon://delete"/>
                             <OverflowToolbarButton tooltip="Save" text="Save" press=".onSave" icon="sap-icon://add"/> -->
 
-                            <Button type="Accept" text="Save" press=".onSave">
+                            <Button type="Accept" text="{i18n>addTodoSaveBtnText}" press=".onSave">
                                 <layoutData>
                                     <OverflowToolbarLayoutData priority="NeverOverflow" />
                                 </layoutData>
                             </Button>
-                            <Button type="Reject" text="Cancel" press=".goBack">
+                            <Button type="Reject" text="{i18n>addTodoCancelBtnText}" press=".goBack">
                                 <layoutData>
                                     <OverflowToolbarLayoutData priority="NeverOverflow" />
                                 </layoutData>
