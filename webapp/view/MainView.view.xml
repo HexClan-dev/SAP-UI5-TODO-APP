@@ -4,9 +4,9 @@
     <Shell id="shell">
         <App id="app">
             <pages>
-                <Page id="page" title="{i18n>title}">
+                <Page id="page" title="{i18n>mainPageTitle}">
                     <content>
-                        <List items="{/TODOSet}" id="mainTodoList" headerText="TODO List" growing="true" growingThreshold="4" mode="SingleSelect" growingScrollToLoad="false">
+                        <List items="{/TODOSet}" id="mainTodoList" headerText="{i18n>mainPageListTitle}" growing="true" growingThreshold="8" mode="SingleSelect" growingScrollToLoad="false">
                             <items>
                                 <StandardListItem type="Active" title="{Title}" description="{Description}" press=".onItemSelected" info="{
                                     parts :[
@@ -28,11 +28,11 @@
 
                             <headerToolbar>
                                 <OverflowToolbar>
-                                    <Title text="TODO List" level="H2" />
+                                    <Title text="{i18n>mainPageListTitle}" level="H2" />
                                     <ToolbarSpacer />
                                     <SearchField width="50%" search=".onUserFilter" />
-                                    <Button text="Add new Todo" icon="sap-icon://add" press=".onNewTODO" />
-                                    <Button text="Delete" icon="sap-icon://delete" press=".onPressDelete" />
+                                    <Button text="{i18n>mainPageAddTodoBtnText}" icon="sap-icon://add" press=".onNewTODO" />
+                                    <Button text="{i18n>mainPageDeleteBtnText}" icon="sap-icon://delete" press=".onPressDelete" />
                                 </OverflowToolbar>
                             </headerToolbar>
 
