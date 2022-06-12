@@ -155,8 +155,21 @@ sap.ui.define(
 
       goBack: function () {
         this.onNavBack();
-      }
+      },
 
+      getBindingData: function () {
+        // // retrieve the i18n resource bundle via the i18n model
+        // var oResourceBundle = this.getView().getModel("i18n").getResourceBundle();
+
+        // // retrieve the dynamic values from the OData model
+        // var sState = this.getView().getModel("ODataModel").getProperty("/state");
+        // var sDate = this.getView().getModel("ODataModel").getProperty("/date");
+
+        // // switch the i18n text
+        // // set the i18n text to the control via its key
+        // // pass the dynamic arguments to the i18n text with parameters
+        // this.byId("text2").setText(oResourceBundle.getText("fooBar"));
+      }
     });
   }
 );

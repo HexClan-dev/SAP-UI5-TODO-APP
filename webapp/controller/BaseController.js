@@ -25,6 +25,37 @@ sap.ui.define([
     return Controller.extend("todoapp.controller.BaseController", {
       formatter: formatter,
 
+      onInit: function () {
+        // this._initI18n();
+      },
+
+      _initI18n: function () {
+        debugger; // break-point;
+
+        // This will be useful to create a Translation file for each page/controller
+        // The i18n folder must be created inside the controller folder
+        var i18n = "i18n";
+        //create bundle descriptor for this controllers i18n resource data
+        var metadata = this.getMetadata(this);
+        var nameParts = metadata.getName().split(".");
+        nameParts.pop();
+        nameParts.push(i18n);
+        nameParts.push(i18n);
+        var bundleData = {
+          bundleName: nameParts.join(".")
+        };
+
+        //Use the bundledata to create or enhance the i18n model
+        var i18nModel = this.getModel(i18n);
+        if (i18nModel) {
+          i18nModel.enhance(bundleData);
+        } else {
+          i18nModel = new ResourceModel(bundleData);
+        }
+        //set this i18n model.
+        this.setModel(i18nModel, i18n);
+      },
+
       /**
        * Convenience method for getting the view model by name in every controller of the application.
        * @public
@@ -113,6 +144,14 @@ sap.ui.define([
         if (!key) {
           return '';
         }
+
+        // // retrieve the i18n resource bundle via the i18n model
+        // var oResourceBundle = this.getView().getModel("i18n").getResourceBundle();
+        // // retrieve the control via its id "button-id" from the controller's view
+        // var oButton = this.byId("button-id");
+        // // retrieve the i18n text via its key "bar" from the resource bundle
+        // // and set it to the control
+        // oButton.setText(oResourceBundle.getText("bar"));
 
         // This will get a predefined text from the i18 file
         return this.getResourceBundle().getText(key, parameters);
