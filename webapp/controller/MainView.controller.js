@@ -40,7 +40,7 @@ sap.ui.define([
             },
 
             onPressDelete: function () {
-                var oList = this.byId("mainList");
+                var oList = this.byId("mainTodoList");
                 var items = oList.getSelectedItems();
 
                 // console.log(items);

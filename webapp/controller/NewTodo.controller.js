@@ -35,7 +35,6 @@ sap.ui.define(
 
             _onNrEntriesFound: function (oResult) {
                 const nrEntries = parseInt(oResult.Id);
-
                 console.log("Nr of Entries : " + nrEntries);
                 // Define default propert when the New entry will be created
                 const oProperties = {
@@ -45,7 +44,6 @@ sap.ui.define(
                     Description: "",
                     Endtime: ""
                 };
-
                 // Create a Context with the properties
                 const oContext = this.getModel().createEntry("/TODOSet", {
                     properties: oProperties,
